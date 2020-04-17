@@ -1,0 +1,31 @@
+CREATE DATABASE almox;
+
+CREATE USER 'usuarioalmox'@'localhost' IDENTIFIED BY '0cENUP&uAz@F';
+
+GRANT ALL PRIVILEGES ON * . * TO 'usuarioalmox'@'localhost';
+
+FLUSH PRIVILEGES;
+
+CREATE TABLE usuario (
+    id_user int not null AUTO_INCREMENT,
+    matricula int not null,
+    nome varchar (30) not null,
+    login varchar (30) not null,
+    senha varchar (15) not null,
+    PRIMARY KEY (id_user)
+) ENGINE = MyISAM;
+
+INSERT INTO usuario (matricula, nome, login, senha)
+VALUE (000259901, 'José Douglas Freire Cananéa', 'jose259901', 'Douglas217');
+
+SELECT * FROM usuario;
+
+CREATE TABLE produto (
+    id_prod int not null AUTO_INCREMENT,
+    descricao varchar (40) not null,
+    
+)
+
+
+https://www.devmedia.com.br/criando-um-sistema-de-cadastro-e-login-com-php-e-mysql/37213
+
