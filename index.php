@@ -40,7 +40,7 @@
             <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
             </label><br><br><br>
-            <a href="cadastro.html">Cadastre-se</a>
+            
         </div>
         </form>
     </div>

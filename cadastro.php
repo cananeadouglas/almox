@@ -1,4 +1,8 @@
 <?php
+
+$today = date("m.d.y");
+//echo $today;
+
 session_start();
 
 if(!isset($_SESSION['login'])){
@@ -11,31 +15,8 @@ if(isset($_GET['deslogar'])){
   header("Location: index.php");
 }
 
-//echo $_SESSION['login'];
-$login = $_SESSION['login'];
-//echo $login;
-include "connection.php";
-
-/*
-$sql = mysqli_query($conn,"SELECT nome FROM usuario WHERE login = '$login' ") or die(' Erro na query:' . $sql . ' ' . mysqli_error() );
-
-while ($row = mysqli_fetch_array( $sql )) 
-{ 
-      print $row[codigo] . " -- " . $row[nome] . " -- " . $row[endereco]; 
-}
-*/
-
-$sql = mysqli_query($conn,"SELECT nome FROM usuario WHERE login = '$login' ") or die('Erro na query:' . $sql . ' ' . mysqli_error());
-
-while ($row = mysqli_fetch_array( $sql )) 
-{ 
-      $nome = $row[nome]; 
-}
-
-//echo utf8_encode("$nome");
-$date = Date;
-//echo $date;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -45,7 +26,8 @@ $date = Date;
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="css/bootstrap.min.js"></script>
     <script src="css/jquery.min.js"></script>
-    <title>Principal</title>
+    <link rel="stylesheet" href="css/pucha_php.css">
+    <title>Cadastro de produtos</title>
 </head>
 <body onload="teste()">
   <nav class="navbar navbar-default">
@@ -64,11 +46,24 @@ $date = Date;
     </div>
   </nav>
 
-<div class="container">
-  <h3><?php echo utf8_encode("Seja bem Vindo(a): $nome"); ?></h3>
-  <p>O Atacadão está capacitado para atender às redes de supermercados e aos comércios em geral, entregando as mercadorias em qualquer parte do país. O cliente sempre encontra um mix de produtos podendo efetuar seus pedidos por telefone ou solicitar um representante.</p>
-</div>
+  <section>
+       <div class="form-group">
+            <form action="cad.php" method="POST">
+                <h1 align="center">Cadastro de Produtos</h1>
+                <label for="ex1">Descrição</label>
+                <input class="form-control" name="desc" id="ex1" type="text" placeholder="Ex. Fita Backup - IBM - 1,5TB" required="required">
 
+                <label for="ex3">Local de Armazenamento</label>
+                <input class="form-control" name="local" id="ex3" type="text" placeholder="ex. Prateleira A-06" required="required">
+
+                <label for="ex4">Valor do Produto</label>
+                <input class="form-control" name="v_prod" id="ex4" type="number" step="0.01"placeholder="somente numeros, ex. 10.50 ou deixe vazio" required="required">
+                
+                <br><br>
+                <input class="form-control" type="submit" value="Gravar Informação" >
+            </form>
+        </div>
+</section>
 <script src="script.js"></script>
 
 </body>

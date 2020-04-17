@@ -1,4 +1,8 @@
 <?php
+
+$today = date("m.d.y");
+//echo $today;
+
 session_start();
 
 if(!isset($_SESSION['login'])){
@@ -11,31 +15,8 @@ if(isset($_GET['deslogar'])){
   header("Location: index.php");
 }
 
-//echo $_SESSION['login'];
-$login = $_SESSION['login'];
-//echo $login;
-include "connection.php";
-
-/*
-$sql = mysqli_query($conn,"SELECT nome FROM usuario WHERE login = '$login' ") or die(' Erro na query:' . $sql . ' ' . mysqli_error() );
-
-while ($row = mysqli_fetch_array( $sql )) 
-{ 
-      print $row[codigo] . " -- " . $row[nome] . " -- " . $row[endereco]; 
-}
-*/
-
-$sql = mysqli_query($conn,"SELECT nome FROM usuario WHERE login = '$login' ") or die('Erro na query:' . $sql . ' ' . mysqli_error());
-
-while ($row = mysqli_fetch_array( $sql )) 
-{ 
-      $nome = $row[nome]; 
-}
-
-//echo utf8_encode("$nome");
-$date = Date;
-//echo $date;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -45,7 +26,8 @@ $date = Date;
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="css/bootstrap.min.js"></script>
     <script src="css/jquery.min.js"></script>
-    <title>Principal</title>
+    <link rel="stylesheet" href="css/pucha_php.css">
+    <title>Cadastro de produtos</title>
 </head>
 <body onload="teste()">
   <nav class="navbar navbar-default">
@@ -64,10 +46,34 @@ $date = Date;
     </div>
   </nav>
 
-<div class="container">
-  <h3><?php echo utf8_encode("Seja bem Vindo(a): $nome"); ?></h3>
-  <p>O Atacadão está capacitado para atender às redes de supermercados e aos comércios em geral, entregando as mercadorias em qualquer parte do país. O cliente sempre encontra um mix de produtos podendo efetuar seus pedidos por telefone ou solicitar um representante.</p>
-</div>
+    <section>
+        <div class="table-responsive">
+
+            <h1 align="center">Lista de Produtos Cadastrados</h1>
+
+            <?php
+                
+            include "connection.php";
+            $sql = mysqli_query($conn,"SELECT descricao, local_setor, valor FROM produto ORDER BY 1;") or die(' Erro na query:' . $sql . ' ' . mysqli_error() );
+
+            echo "<table class='table table-hover'>";
+            echo "<tr>";
+            echo "<th>Descrição</th>";
+            echo "<th>Local Guardado</th>";
+            echo "<th>Valor do Produto</th>";
+            echo "</tr><tr>";
+
+            while ($row = mysqli_fetch_array( $sql )) 
+            { 
+                echo "<td>{$row['descricao']}</td>";
+                echo "<td>{$row['local_setor']}</td>";
+                echo "<td>{$row['valor']}</td></tr>";
+            }
+
+            ?>
+
+        </div>
+    </section>
 
 <script src="script.js"></script>
 
