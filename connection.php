@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "usuarioalmox";
-$password = "0cENUP&uAz@F";
+$username = "root";
+$password = "";
 $db = "almox";
 
 // Create connection

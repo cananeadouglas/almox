@@ -24,7 +24,7 @@
 <body onload="teste()">
 
 <br><br><br><br><br>
-    <h2 align="center">Seja bem vindo, Portal do Almoxarifado Atacadão</h2><br>
+    <h2 align="center">Seja bem vindo, Portal do Almoxarifado</h2><br>
 
     <div>
         <form action="action.php" method="POST">
@@ -45,7 +45,7 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
 
 </body>
 </html>

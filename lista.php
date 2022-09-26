@@ -1,6 +1,6 @@
 <?php
 
-$today = date("m.d.y");
+$today = date("y.m.d");
 //echo $today;
 
 session_start();
@@ -33,13 +33,14 @@ if(isset($_GET['deslogar'])){
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="entrada.php">Almoxarifado Atacadão Maceió Praia</a>
+        <a class="navbar-brand" href="entrada.php">Almoxarifado</a>
       </div>
       <ul class="nav navbar-nav">
-        <li id="cadastro"><a href="cadastro.php">Cadastro de materiais</a></li>
-        <li id="consulta"><a href="lista.php">Lista de Produtos</a></li>
-        <li id="entrada"><a href="#">Entradas</a></li>
-        <li id="saida"><a href="#">Saidas</a></li>
+        <li><a href="cadastro.php">Cadastro de materiais</a></li>
+        <li><a href="lista.php">Lista de Produtos</a></li>
+        <li><a href="add.php">Adicionar/Excluir</a></li>
+        <li><a href="reg.php">Registros</a></li>
+        <li><a href="consulta.php">Consultar</a></li>
         <li id="saindo"><a href="?deslogar">Sair</a></li>
         
       </ul>
@@ -49,25 +50,27 @@ if(isset($_GET['deslogar'])){
     <section>
         <div class="table-responsive">
 
-            <h1 align="center">Lista de Produtos Cadastrados</h1>
+            <h3 align="center">Lista de Produtos Cadastrados</h3>
 
             <?php
                 
             include "connection.php";
-            $sql = mysqli_query($conn,"SELECT descricao, local_setor, valor FROM produto ORDER BY 1;") or die(' Erro na query:' . $sql . ' ' . mysqli_error() );
+            $sql = mysqli_query($conn,"select descricao, local_setor, valor, quantidade from produto;") or die(' Erro na query:' . $sql . ' ' . mysqli_error() );
 
             echo "<table class='table table-hover'>";
             echo "<tr>";
             echo "<th>Descrição</th>";
             echo "<th>Local Guardado</th>";
             echo "<th>Valor do Produto</th>";
+            echo "<th>Quantidade</th>";
             echo "</tr><tr>";
 
             while ($row = mysqli_fetch_array( $sql )) 
             { 
                 echo "<td>{$row['descricao']}</td>";
                 echo "<td>{$row['local_setor']}</td>";
-                echo "<td>{$row['valor']}</td></tr>";
+                echo "<td>{$row['valor']}</td>";
+                echo "<td>{$row['quantidade']}</td></tr>";
             }
 
             ?>
@@ -75,7 +78,7 @@ if(isset($_GET['deslogar'])){
         </div>
     </section>
 
-<script src="script.js"></script>
+<script src="script1.js"></script>
 
 </body>
 </html>

@@ -33,13 +33,14 @@ if(isset($_GET['deslogar'])){
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="entrada.php">Almoxarifado Atacadão Maceió Praia</a>
+        <a class="navbar-brand" href="entrada.php">Almoxarifado</a>
       </div>
       <ul class="nav navbar-nav">
-        <li id="cadastro"><a href="cadastro.php">Cadastro de materiais</a></li>
-        <li id="consulta"><a href="lista.php">Lista de Produtos</a></li>
-        <li id="entrada"><a href="#">Entradas</a></li>
-        <li id="saida"><a href="#">Saidas</a></li>
+        <li><a href="cadastro.php">Cadastro de materiais</a></li>
+        <li><a href="lista.php">Lista de Produtos</a></li>
+        <li><a href="add.php">Adicionar/Excluir</a></li>
+        <li><a href="reg.php">Registros</a></li>
+        <li><a href="consulta.php">Consultar</a></li>
         <li id="saindo"><a href="?deslogar">Sair</a></li>
         
       </ul>
@@ -47,24 +48,24 @@ if(isset($_GET['deslogar'])){
   </nav>
 
   <section>
-       <div class="form-group">
-            <form action="cad.php" method="POST">
-                <h1 align="center">Cadastro de Produtos</h1>
-                <label for="ex1">Descrição</label>
-                <input class="form-control" name="desc" id="ex1" type="text" placeholder="Ex. Fita Backup - IBM - 1,5TB" required="required">
+    <div class="form-group">
+      <form action="cad.php" method="POST">
+        <h3 align="center">Cadastro de Produtos</h3>
+        <label>Descrição</label>
+        <input class="form-control" name="desc" id="ex1" type="text" placeholder="Ex. Fita Backup - IBM - 1,5TB" required="required"><br>
 
-                <label for="ex3">Local de Armazenamento</label>
-                <input class="form-control" name="local" id="ex3" type="text" placeholder="ex. Prateleira A-06" required="required">
+        <label>Local de Armazenamento</label>
+        <input class="form-control" name="local" id="ex3" type="text" placeholder="ex. Prateleira A-06" required="required"><br>
 
-                <label for="ex4">Valor do Produto</label>
-                <input class="form-control" name="v_prod" id="ex4" type="number" step="0.01"placeholder="somente numeros, ex. 10.50 ou deixe vazio" required="required">
+        <label>Valor do Produto</label>
+        <input class="form-control" name="v_prod" id="ex4" type="number" step="0.01"placeholder="somente valores, ex. 10.50" required="required"><br>
                 
-                <br><br>
-                <input class="form-control" type="submit" value="Gravar Informação" >
-            </form>
-        </div>
+        <br><br>
+        <input class="form-control" type="submit" value="Gravar Informação" >
+      </form>
+    </div>
 </section>
-<script src="script.js"></script>
+<script src="script1.js"></script>
 
 </body>
 </html>

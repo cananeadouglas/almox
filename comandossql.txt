@@ -13,14 +13,14 @@ show variables like '%char%';
 CREATE TABLE usuario (
     id_user int not null AUTO_INCREMENT,
     matricula int not null,
-    nome varchar (30) not null,
+    nome varchar (50) not null,
     login varchar (30) not null,
-    senha varchar (15) not null,
+    senha varchar (25) not null,
     PRIMARY KEY (id_user)
 ) ENGINE = MyISAM;
 
 INSERT INTO usuario (matricula, nome, login, senha)
-VALUE (000259901, 'José Douglas Freire Cananéa', 'jose259901', 'Douglas217');
+VALUE (111959901, 'oliveira santos', 'oliver299832', 'Douglas222222');
 
 SELECT * FROM usuario;
 
@@ -28,27 +28,52 @@ CREATE TABLE produto (
     id_prod int not null AUTO_INCREMENT,
     descricao varchar (60) not null,
     local_setor varchar (15) not null,
-    valor float not null,
+    valor decimal(10,2) not null,
+    data_entrada date not null,
+    quantidade int,
     PRIMARY KEY (id_prod)
 ) ENGINE = MyISAM;
 
-INSERT INTO produto (descricao, local_setor, valor) 
-VALUE ('Alcool em Gel 1 L', 'A6', 10.50);
+INSERT INTO produto (descricao, local_setor, valor, data_entrada, quantidade) 
+VALUE ();
 
 SELECT * FROM produto;
 
 CREATE TABLE estoque (
     id_est int not null AUTO_INCREMENT,
     data_atual date not null,
-    id_user not null,
-    id_prod not null,
+    id_user int not null,
+    id_prod int not null,
     quantidade int not null,
     PRIMARY KEY (id_est),
     FOREIGN KEY (id_user) REFERENCES usuario(id_user),
     FOREIGN KEY (id_prod) REFERENCES produto(id_prod)
 ) ENGINE = MyISAM;
 
-INSERT INTO estoque (data_atual, id_user, id_prod, quantidade)
+INSERT INTO estoque (data_atual, id_user, id_prod, quantidade, ) 
+VALUE ()
+
+Valor total em estoque;
+
+select sum(valor * quantidade) as total from produto;
+
+Quantidade de produtos;
+select sum(quantidade) as total from produto;
+
+Valor total por descricao;
+
+select descricao, sum(valor * quantidade) as total from produto group by descricao;
+
+lista de produtos sem produtos zerados;
+
+select descricao, local_setor, valor, quantidade from produto where quantidade not in (select quantidade from produto where quantidade <= 0) order by 1;
+
+modificar coluna;
+
+select data_atual from estoque
+
+tipo like
+select u.login, p.descricao, p.local_setor, p.valor from produto p, usuario u WHERE p.descricao like 'jose259901' or p.valor like 'jose259901' or p.local_setor like 'jose259901' or u.login like 'jose259901'
 
 DATE - format YYYY-MM-DD
 
