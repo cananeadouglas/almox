@@ -1,8 +1,8 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "localhost:8081";
+$username = "admin";
+$password = "admin";
 $db = "almox";
 
 // Create connection
